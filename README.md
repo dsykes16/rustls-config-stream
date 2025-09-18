@@ -1,5 +1,11 @@
 # rustls-config-stream
 
+[![Tests](https://github.com/dsykes16/rustls-config-stream/actions/workflows/test.yml/badge.svg)](https://github.com/dsykes16/rustls-config-stream/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/dsykes16/rustls-config-stream/graph/badge.svg?token=SJFGDZMV3J)](https://codecov.io/gh/dsykes16/rustls-config-stream)
+[![Crates.io License](https://img.shields.io/crates/l/rustls-config-stream)](https://github.com/dsykes16/rustls-config-stream/blob/main/LICENSE)
+[![dependency status](https://deps.rs/repo/github/dsykes16/rustls-config-stream/status.svg)](https://deps.rs/repo/github/dsykes16/rustls-config-stream)
+[![CodeFactor](https://www.codefactor.io/repository/github/dsykes16/rustls-config-stream/badge)](https://www.codefactor.io/repository/github/dsykes16/rustls-config-stream)
+
 [`rustls::ServerConfig`] provider backed by an async stream.
 
 This module exposes a [`ServerConfigProvider`] that holds the "current"
