@@ -1,0 +1,30 @@
+[package]
+name = "rustls-config-stream"
+version = "0.1.0"
+edition = "2024"
+authors = ["Dwayne Sykes <dwayne@sykes.pw>"]
+license = "Apache-2.0 WITH LLVM-exception"
+description = "Async stream backed Rustls ServerConfig provider for cert/root hot-reload"
+
+[features]
+default = ["tracing"]
+tracing = ["dep:tracing"]
+
+[dependencies]
+arc-swap = "1.7.1"
+rustls = { version = "0.23.31", default-features = false, features = ["std"] }
+thiserror = "2.0.16"
+tokio = { version = "1.47.1", default-features = false, features = [
+	"rt",
+	"time",
+] }
+tokio-stream = { version = "0.1.17", default-features = false }
+tracing = { version = "0.1.41", default-features = false, optional = true }
+
+[dev-dependencies]
+rustls = { version = "0.23.31", features = ["aws-lc-rs"] }
+tokio = { version = "1.47.1", features = [
+	"full",
+	"rt-multi-thread",
+	"test-util",
+] }
