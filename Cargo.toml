@@ -5,6 +5,7 @@ edition = "2024"
 authors = ["Dwayne Sykes <dwayne@sykes.pw>"]
 license = "Apache-2.0 WITH LLVM-exception"
 description = "Async stream backed Rustls ServerConfig provider for cert/root hot-reload"
+repository = "https://github.com/dsykes16/rustls-config-stream"
 
 [features]
 default = ["tracing"]
@@ -28,3 +29,7 @@ tokio = { version = "1.47.1", features = [
 	"rt-multi-thread",
 	"test-util",
 ] }
+
+[lints.rust]
+unsafe_code = "forbid"
+missing_docs = "forbid"

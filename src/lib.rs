@@ -1,6 +1,16 @@
 // SPDX-License-Identifier: Apache-2.0 WITH LLVM-exception
-
 #![doc = include_str!("../README.md")]
+#![forbid(rust_2018_idioms)]
+#![forbid(missing_docs, unsafe_code)]
+#![deny(
+    clippy::all,
+    clippy::pedantic,
+    clippy::unwrap_used,
+    clippy::expect_used,
+    clippy::nursery,
+    clippy::dbg_macro,
+    clippy::todo
+)]
 
 use std::{
     sync::{
@@ -48,11 +58,11 @@ pub enum ServerConfigStreamError {
     #[error("cert verifier builder error")]
     VerifierBuilderError(#[from] VerifierBuilderError),
 
-    /// The builder/stream did not provide a [`CertifiedKey`]
+    /// The builder/stream did not provide a [`rustls::sign::CertifiedKey`]
     #[error("missing server certified key")]
     MissingCertifiedKey,
 
-    /// The builder/stream did not provide any root certificates
+    /// The builder/stream did not provide any root certificates resulting in an empty [`rustls::RootCertStore`]
     #[error("missing root certificates")]
     MissingRoots,
 
