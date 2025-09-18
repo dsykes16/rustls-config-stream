@@ -1,0 +1,29 @@
+name: Tests
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+env:
+  CARGO_TERM_COLOR: always
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: taiki-e/install-action@cargo-nextest
+      - uses: taiki-e/install-action@cargo-llvm-cov
+      - name: Run tests
+        run: >
+          cargo llvm-cov nextest
+      - name: Generate coverage report
+        run: cargo llvm-cov report --codecov --output-path coverage.json
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+      - name: Upload coverage report to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
