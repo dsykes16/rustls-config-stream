@@ -1,10 +1,10 @@
 [package]
 name = "rustls-config-stream"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 authors = ["Dwayne Sykes <dwayne@sykes.pw>"]
 license = "Apache-2.0 WITH LLVM-exception"
-description = "Async stream backed Rustls ServerConfig provider for cert/root hot-reload"
+description = "Async stream backed Rustls ServerConfig and ClientConfig providers for cert/root hot-reload"
 repository = "https://github.com/dsykes16/rustls-config-stream"
 
 [features]

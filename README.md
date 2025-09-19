@@ -1,20 +1,23 @@
 # rustls-config-stream
 
+[![Crates.io Version](https://img.shields.io/crates/v/rustls-config-stream)](https://crates.io/crates/rustls-config-stream)
 [![Tests](https://github.com/dsykes16/rustls-config-stream/actions/workflows/test.yml/badge.svg)](https://github.com/dsykes16/rustls-config-stream/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/dsykes16/rustls-config-stream/graph/badge.svg?token=SJFGDZMV3J)](https://codecov.io/gh/dsykes16/rustls-config-stream)
 [![Crates.io License](https://img.shields.io/crates/l/rustls-config-stream)](https://github.com/dsykes16/rustls-config-stream/blob/main/LICENSE)
 [![dependency status](https://deps.rs/repo/github/dsykes16/rustls-config-stream/status.svg)](https://deps.rs/repo/github/dsykes16/rustls-config-stream)
 [![CodeFactor](https://www.codefactor.io/repository/github/dsykes16/rustls-config-stream/badge)](https://www.codefactor.io/repository/github/dsykes16/rustls-config-stream)
 
-[`rustls::ServerConfig`] provider backed by an async stream.
+[`rustls::ServerConfig`] and [`rustls::ClientConfig`] providers backed async streams.
 
-This module exposes a [`ServerConfigProvider`] that holds the "current"
-TLS server configuration and updates it whenever a new config arrives from a
-user-supplied stream (see [`ServerConfigStreamBuilder`]).
+This module exposes a [`ServerConfigProvider`] and [`ClientConfigProvider`].
+Both function identically, holding the current config in an
+[`ArcSwap`](arc_swap::ArcSwap), providing a `get_config()` method to load the
+current config as a standard [`Arc`](std::sync::Arc), and storing a new config
+when it arrives from a user-supplied stream via a [`ServerConfigStreamBuilder`]
+or [`ClientConfigStreamBuilder`].
 
 The background task performs exponential backoff (10ms -> 10s, doubling)
 when the stream fails, and attempts to re-create the stream via the builder.
-Call [`ServerConfigProvider::get_config`] whenever you need an [`Arc<ServerConfig>`].
 
 ## Usage
 
@@ -25,6 +28,8 @@ Call [`ServerConfigProvider::get_config`] whenever you need an [`Arc<ServerConfi
 - Use [`ServerConfigProvider::get_config`] wherever you need the current
   config (e.g. inside an acceptor loop).
 - Optionally monitor liveness via [`ServerConfigProvider::stream_healthy`].
+- [`ClientConfigProvider`] works identically, only for [`rustls::ClientConfig`]
+  instead of [`rustls::ServerConfig`].
 
 ## Tracing
 
