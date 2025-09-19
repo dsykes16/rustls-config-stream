@@ -1,10 +1,11 @@
 # rustls-config-stream
 
-[![Crates.io Version](https://img.shields.io/crates/v/rustls-config-stream)](https://crates.io/crates/rustls-config-stream)
+[![Version](https://img.shields.io/crates/v/rustls-config-stream)](https://crates.io/crates/rustls-config-stream)
 [![Tests](https://github.com/dsykes16/rustls-config-stream/actions/workflows/test.yml/badge.svg)](https://github.com/dsykes16/rustls-config-stream/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/dsykes16/rustls-config-stream/graph/badge.svg?token=SJFGDZMV3J)](https://codecov.io/gh/dsykes16/rustls-config-stream)
-[![Crates.io License](https://img.shields.io/crates/l/rustls-config-stream)](https://github.com/dsykes16/rustls-config-stream/blob/main/LICENSE)
-[![dependency status](https://deps.rs/repo/github/dsykes16/rustls-config-stream/status.svg)](https://deps.rs/repo/github/dsykes16/rustls-config-stream)
+[![Docs](https://img.shields.io/docsrs/rustls-config-stream)](https://docs.rs/rustls-config-stream/latest/rustls_config_stream/)
+[![CodeCov](https://codecov.io/gh/dsykes16/rustls-config-stream/graph/badge.svg?token=SJFGDZMV3J)](https://codecov.io/gh/dsykes16/rustls-config-stream)
+[![License](https://img.shields.io/crates/l/rustls-config-stream)](https://github.com/dsykes16/rustls-config-stream/blob/main/LICENSE)
+[![Dependencies](https://deps.rs/repo/github/dsykes16/rustls-config-stream/status.svg)](https://deps.rs/repo/github/dsykes16/rustls-config-stream)
 [![CodeFactor](https://www.codefactor.io/repository/github/dsykes16/rustls-config-stream/badge)](https://www.codefactor.io/repository/github/dsykes16/rustls-config-stream)
 
 [`rustls::ServerConfig`] and [`rustls::ClientConfig`] providers backed async streams.
